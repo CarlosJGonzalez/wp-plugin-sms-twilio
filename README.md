@@ -11,7 +11,7 @@ Instructions to installing it:
 -credentials.inc.php
 -retreiving.cred.inc.php
 
-2)Open your WP admin panel and click [Plugins/Add] New option
+2)Open your WP admin panel and click [Plugins/Add New] option
 
 3)Click [Upload Plugin] button at top
 
