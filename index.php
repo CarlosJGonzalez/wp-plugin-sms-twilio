@@ -183,6 +183,8 @@ function cg_twilio_sms_sent()
 						echo $json['message'];
 					}	
 				}
+			}else{
+				echo '<h2>The SMS was not sent. We are sorry for the inconvenience.</h2>';
 			}
 		}
 	}
