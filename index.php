@@ -44,7 +44,7 @@ function _cg_twilio_sms_sender_options()
 	echo '<div class="wrap woocommerce">';
 		echo '<nav class="nav-tab-wrapper woo-nav-tab-wrapper">';
 		$tabs[] = 'setting';
-		$tabs[] = 'help';
+		//$tabs[] = 'help';
 		
 		foreach ($tabs as $tab)
 		{
