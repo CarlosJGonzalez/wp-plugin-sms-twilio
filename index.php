@@ -146,7 +146,6 @@ function cg_twilio_sms_sent()
 	if($_POST)
     {
 		if (isset($_POST['cg_creating_sms_sender_form'])){
-
 			$n=substr($_POST['your-name'],0,10);
 			$e=substr($_POST['your-email'],0,15);
 			$m=$n.'>'.$e.'>'.substr(htmlentities(trim($_POST['your-message'])),0,135);		
@@ -165,14 +164,26 @@ function cg_twilio_sms_sent()
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_USERPWD, $account_sid.':'.$auth_token);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-			curl_exec($ch);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$json = curl_exec($ch);
 			if(curl_errno($ch)){
 				echo "Error:". curl_error($ch);
 			}
-			curl_close($ch);		
-			wp_redirect('twilio-sms-sent', 301);
-			exit;
+			curl_close($ch);	
+			$json = json_decode($json, true);
+			
+			if(is_array($json)){
+				if(array_key_exists('sid', $json))
+				{
+					wp_redirect('twilio-sms-sent', 301);					
+					exit;
+				}elseif(array_key_exists('status', $json))
+				{
+					if($json['status'] != 200){
+						echo $json['message'];
+					}	
+				}
+			}
 		}
 	}
 }
