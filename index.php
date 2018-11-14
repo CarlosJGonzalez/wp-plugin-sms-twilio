@@ -126,9 +126,9 @@ document.getElementById(\'btnSMS\').style.display=\'block\';
 <label>Your Name (10 chars)</label><br>
 <input type="hidden" name="cg_creating_sms_sender_form">
 <input name="your-name" type="text" required /><br>
-<label>Email or Phone Number (max. 15 chars)</label><br>
+<label>Email or Phone Number</label><br>
 <input name="your-email" type="text" required /><br>
-<label>Message (max. 135 chars)</label><br>
+<label>Message</label><br>
 <textarea cols="40" name="your-message" rows="2" required></textarea><br>
 <input type="submit" value="Send"  />&nbsp;<input type="button" value="Cancel" onclick="javascript: cancela();" />
 </form>
@@ -146,8 +146,8 @@ function cg_twilio_sms_sent()
 	if($_POST)
     {
 		if (isset($_POST['cg_creating_sms_sender_form'])){
-			$n=substr($_POST['your-name'],0,10);
-			$e=substr($_POST['your-email'],0,15);
+			$n=substr(htmlentities($_POST['your-name'],0,30));
+			$e=substr(htmlentities($_POST['your-email'],0,35));
 			$m=$n.'>'.$e.'>'.substr(htmlentities(trim($_POST['your-message'])),0,135);		
 
 			///////////////////////////////////////
@@ -222,7 +222,7 @@ get_footer();';
 					'comment_status'	=>	'closed',
 					'ping_status'		=>	'closed',
 					'post_author'		=>	1,
-					'post_name'			=>	$slug,
+					'post_name'		=>	$slug,
 					'post_title'		=>	$slug,
 					'post_content'		=>	'',
 					'post_status'		=>	'publish',
