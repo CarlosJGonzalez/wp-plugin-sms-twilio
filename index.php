@@ -123,7 +123,7 @@ document.getElementById(\'btnSMS\').style.display=\'block\';
 </script>
 <div id="divSMS" style="display: none;">
 <form action="" method="POST" name="frmSMS" action="../" target="_self">
-<label>Your Name (10 chars)</label><br>
+<label>Your Name</label><br>
 <input type="hidden" name="cg_creating_sms_sender_form">
 <input name="your-name" type="text" required /><br>
 <label>Email or Phone Number</label><br>
