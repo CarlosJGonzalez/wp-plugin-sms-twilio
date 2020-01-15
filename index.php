@@ -70,7 +70,7 @@ function _cg_twilio_sms_sender_options()
 
 		if($_REQUEST)
 		{
-			echo '<div class="clear">';
+			echo '<div class="clear col-md-6">';
 			if(isset($_REQUEST['tab']))
 			{
 				$tab = strtolower($_REQUEST['tab']);
